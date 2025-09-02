@@ -1,0 +1,101 @@
+.below-header, .main-body {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.header-button {
+    border-radius: 5px;
+    align-items: center;
+    border: 2px solid transparent;
+    background-color: transparent;
+    transition: all .3s;
+    width: fit-content;
+    white-space: nowrap;
+    color: black;
+}
+
+.header-list {
+    flex-wrap: nowrap;
+}
+
+.header-button:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+main {
+    background-color: rgb(249, 250, 251);
+}
+
+.middle-body {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1000px) {
+    .middle-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+.red-pill {
+    border: 1px solid rgb(255, 182, 182);
+    background-color: rgb(255, 218, 218);
+    color: rgb(191, 0, 0);
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding: 1px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: default;
+}
+
+.progressbar {
+    width: 100%;
+}
+
+.green-pill {
+    border: 1px solid rgb(155, 214, 155);
+    background-color: rgb(232, 255, 232);
+    color: rgb(2, 158, 2);
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding: 1px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: default;
+}
+
+.info-card {
+    border: 1px solid rgb(222, 226, 230);
+}
+
+.bottom-nav {
+    background-color: rgb(236, 236, 236);
+}
+
+.bottom-section {
+    border: 1px solid rgb(222, 226, 230);
+}
+
+.btm-text {
+    color: #64748B;
+    font-size: 12px;
+    width: auto;
+}
+
+.nav-pills > li > .btm-text.active{
+    background-color:white !important;
+    color: black !important;
+  }
+
+  .tab-top {
+    border: 1px solid rgb(222, 226, 230);
+  }
+
+  .alert {
+    border: 1px solid rgb(155, 214, 155);
+    background-color: rgb(232, 255, 232);
+    color: rgb(2, 158, 2);
+  }
+

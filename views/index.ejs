@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/projects-page.css">
+  </head>
+  <body>
+    <header class="d-flex flex-row p-4 justify-content-between bg-white">
+      <div>
+        <h1 style="margin: 0;">Construction Site Management</h1>
+        <text>Track and Manage all of your construction projects</text>
+      </div>
+      <div class="status-cards d-flex flex-row">
+        <div class="card m-1 total-projects text-center" style="width: 8rem;">
+          <div class="card-body">
+            <h6 class="card-title">Projects</h6>
+            <h3 class="card-text text-center" id="total-status" style="color: black;"></h3>
+          </div>
+        </div>
+        <div class="card m-1 in-progress text-center" style="width: 8rem;">
+          <div class="card-body">
+            <h6 class="card-title">En course</h6>
+            <h3 class="card-text text-center" id="en-course-status" style="color: black;"></h3>
+          </div>
+        </div>
+        <div class="card m-1 finished text-center" style="width: 8rem;">
+          <div class="card-body">
+            <h6 class="card-title">Termines</h6>
+            <h3 class="card-text text-center" id="termines-status" style="color: black;"></h3>
+          </div>
+        </div>
+        <div class="card m-1 urgent-count text-center" style="width: 8rem;">
+          <div class="card-body">
+            <h6 class="card-title">Urgents</h6>
+            <h3 class="card-text text-center" id="urgents-status" style="color: black;"></h3>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="pt-5">
+      <div class="main-body">
+        <nav class="navbar navbar-expand bg-white p-4 rounded-4 navigation">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                <input type="search" class="search-box rounded-3 border border-1 col-5" id="myInput" onkeyup="searchProjects();" aria-label="Search" placeholder="Search for projects..">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-2">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle rounded-3 border border-1 dropdown-icon ms-3" href="#" role="button" data-bs-toggle="dropdown" id="dropdown-cover" aria-expanded="false">
+                      All statuses
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" onclick="show('All statuses');" href="#">All statuses</a></li>
+                      <li><a class="dropdown-item" onclick="show('En course');" href="#">In Progress</a></li>
+                      <li><a class="dropdown-item" onclick="show('Termines');" href="#">Finished</a></li>
+                      <li><a class="dropdown-item" onclick="show('Retarde');" href="#">Delayed</a></li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container cards-main p-0 mt-5">
+          <div class="d-grid gap-5 card-table" id="card-location">
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      let data = '<%- JSON.stringify(projectData)%>';
+      data = JSON.parse(data);
+      document.addEventListener("DOMContentLoaded", setup);
+       function setup() {
+    //     fetch('../projects.json')
+    //         .then(response => response.json())
+    //         .then(data => {
+            const cardContainer = document.getElementById("card-location");
+            let numProgress = 0;
+            let numUrgent = 0;
+            let numFinished = 0;
+            let numTotal = 0;
+            // console.log(data);
+            console.log(data[0]);
+            data.forEach(project => {
+              numTotal++;
+              const card = document.createElement('div');
+              card.className += "card col p-4 filterCards active-card rounded-4";
+              // card.style.maxWidth = "35rem";
+              card.id = numTotal;
+              let html = `<img src="/img/${project.features.image}" class="card-img-top card-photo" alt="card-image">
+          <div class="card-body p-0">
+            <div class="body-upper">
+              <div class="d-flex justify-content-between">
+                <div class="mt-3">
+                  <h4 class="card-title text-start mb-0" id="${numTotal}-title">${project.title}</h4>
+                  <small class="1-info text-start">${project.category} 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                    </svg> 
+                    ${project.features.location}
+                  </small>
+                </div>
+                <div class="mt-3 d-flex flex-row">`;
+              if (project.features.urgent == "true") {
+                html += `<div class="red-pill me-2">Urgent</div>`;
+              }
+              html += `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="d-flex flex-row">`;
+              if (project.status == "En course") {
+                numProgress++;
+                html +=  `<div class="flag-pills blue-pill my-2 me-2" id="${numTotal}-status">En course</div>`;
+              } else if (project.status == "Termines") {
+                numFinished++;
+                html +=  `<div class="flag-pills green-pill my-2 me-2" id="${numTotal}-status">Termines</div>`;
+              } else if (project.status == "Retarde") {
+                html += `<div class="flag-pills red-pill my-2 me-2" id="${numTotal}-status">Retarde</div>`;
+              }
+
+              if (project.features.urgent == "true") {
+                numUrgent++;
+                html += `<div class="flag-pills red-pill my-2 me-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-calendar4" viewBox="0 0 20 20">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                  </svg>
+                  <text id="days-remaining">${project.features.days} days remaining</text>
+                </div>
+                </div>`;
+              } else {
+                html += `<div class="flag-pills blue-pill my-2 me-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-calendar4" viewBox="0 0 20 20">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                  </svg>
+                  <text id="days-remaining">${project.features.days} days remaining</text>
+                </div>
+                </div>`;
+              }
+              html += `<div class="d-flex justify-content-between">
+              <small>
+                Progression
+              </small>
+              <small id="1-percentage">
+                ${project.features.progression}%
+              </small>
+              </div>
+              <progress class="progressbar" id="1-progress-bar" value="${project.features.progression}" max="100">${project.features.progression} %</progress>
+              <div class="features">
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-collections"><text>Collections</text><text>${project.features.collections} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-staff"><text>Staff</text><text>${project.features.staff}</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-raw-materials"><text>Raw Materials</text><text>${project.features.material} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-tools"><text>Tools</text><text>${project.features.tools} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-vehicles"><text>Vehicles</text><text>${project.features.vehicles} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-diesel"><text>Diesel</text><text>${project.features.diesel} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-works"><text>Works</text><text>${project.features.works} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-expenses"><text>Expenses</text><text>${project.features.expenses} MAD</text></div>
+                <div class="col card-item text-start p-3 d-flex flex-row justify-content-between rounded" id="1-gain"><text>Gain</text><text>${project.features.gain} MAD</text></div>
+              </div>
+              <hr>
+              <div class="features">
+                <a href="projects/${numTotal - 1}"> <button class="bottom-btn rounded py-2"><small>See Details</small></button> </a>
+                <button class="bottom-btn rounded py-2"><small>History</small></button>
+              </div>
+            </div>
+            <div class="body-below">
+            </div>
+          </div>
+          </div>`;
+            card.innerHTML = html;
+            cardContainer.appendChild(card);
+            })
+            document.getElementById("total-status").innerHTML = numTotal;
+            document.getElementById("en-course-status").innerHTML = numProgress;
+            document.getElementById("termines-status").innerHTML = numFinished;
+            document.getElementById("urgents-status").innerHTML = numUrgent;
+       }//)
+//   }
+      function show(category) {
+        const x = document.getElementsByClassName('filterCards');
+        if (category == 'All statuses') {
+          for (let i = 0; i < x.length; i++) {
+            x[i].style.display = '';
+            x[i].classList.add('active-card');
+          }
+        } else {
+          for (let i = 0; i < x.length; i++) {
+            let id = x[i].id;
+            const currElement = document.getElementById(`${id}-status`);
+            if (currElement.innerText == category) {
+              x[i].style.display = '';
+              x[i].classList.add('active-card');
+            } else {
+              x[i].style.display = 'none';
+              x[i].classList.remove('active-card');
+            }
+          }
+        }
+        const cover = document.getElementById('dropdown-cover');
+        cover.innerHTML = category;
+      }
+
+      function searchProjects() {
+        const x = document.getElementsByClassName('active-card');
+        let input = document.getElementById("myInput")
+        let inputText = input.value.toUpperCase();
+        for (let i = 0; i < x.length; i++) {
+          let id = x[i].id;
+          const title = document.getElementById(`${id}-title`).innerText;
+          if (title.toUpperCase().indexOf(inputText) > -1) {
+            x[i].style.display = '';
+          } else {
+            x[i].style.display = 'none';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

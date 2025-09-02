@@ -1,0 +1,114 @@
+[
+    {
+        "title": "Riad Dari 2",
+        "status": "En course",
+        "category": "Construction Sites",
+        "features":
+            {
+                "collections": "850000",
+                "tools": 1000,
+                "works": 2400,
+                "staff": 12,
+                "vehicles": 25000,
+                "expenses": 65000,
+                "material": 120000,
+                "diesel": 8500,
+                "gain": 185000,
+                "days": 412,
+                "urgent": "false",
+                "location": "Tangier",
+                "progression": 10,
+                "image": "projects-img-1.avif"
+            },
+        "projectPage": 
+            {
+                "details": {
+                    "link": "https://360.smartcarte.ma/viewer/index.php?code=d3d9446802a44259755d38e6d163e820",
+                    "reference": "PRJ-2024-001",
+                    "address": "123 Avenue Mohammed V, Tangier",
+                    "floorQuantity": 850,
+                    "clientBudget": 2500000,
+                    "startDate": "15/01/2024",
+                    "creator": "Mohammed Alami"},
+                "financial": {
+                    "client": "Atlas Real Estate Company",
+                    "designation": "Luxury residential construction",
+                    "foundationQuantity": 450,
+                    "maxMD": 2200000,
+                    "deadline": "30/12/2024"},
+                "alerts": [
+                    {
+                        "alert-info": "Low Cement Stock (15 bags remaining)",
+                        "time": "2 hours ago",
+                        "color": "green"},
+                    {
+                        "alert-info": "Budget exceeded by 5%",
+                        "time": "4 hours ago",
+                        "color": "red"},
+                    {
+                        "alert-info": "New delivery scheduled",
+                        "time": "1 day ago",
+                        "color": "blue"} 
+                        ]}
+    },
+    {
+        "title": "Riad Dari 2",
+        "status": "Termines",
+        "category": "Construction Sites",
+        "features":
+            {"collections": "850000",
+            "tools": "1000",
+            "works": "2400",
+            "staff": "12",
+            "vehicles": "25000",
+            "expenses": "65000",
+            "material": "120000",
+            "diesel": "8500",
+            "gain": "185000",
+            "days": "412",
+            "urgent": "true",
+            "location": "Casablanca",
+            "progression": "10",
+            "image": "projects-img-1.avif"}
+    },
+    {
+        "title": "Riad Dari 2",
+        "status": "Retarde",
+        "category": "Construction Sites",
+        "features":
+            {"collections": "850000",
+            "tools": "1000",
+            "works": "2400",
+            "staff": "12",
+            "vehicles": "25000",
+            "expenses": "65000",
+            "material": "120000",
+            "diesel": "8500",
+            "gain": "185000",
+            "days": "412",
+            "urgent": "true",
+            "location": "Marrakech",
+            "progression": "10",
+            "image": "projects-img-1.avif"}
+    },
+    {
+        "title": "Riad Dari 2",
+        "status": "En course",
+        "category": "Construction Sites",
+        "features":
+            {"collections": "850000",
+            "tools": "1000",
+            "works": "2400",
+            "staff": "12",
+            "vehicles": "25000",
+            "expenses": "65000",
+            "material": "120000",
+            "diesel": "8500",
+            "gain": "185000",
+            "days": "412",
+            "urgent": "false",
+            "location": "Tangier",
+            "progression": "10",
+            "image": "projects-img-1.avif"}
+    }
+]

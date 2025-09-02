@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/details-page.css">
+  </head>
+  <body>
+    <header class="border-bottom px-5 py-2 position-sticky top-0 bg-white">
+      <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row">
+          <a href="/" class="pe-4"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          </a>
+          <div>
+            <h5 class="pb-0 mb-0 fw-semibold"><%= title %></h5>
+            <small><%= project.details.reference %></small>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <button class="btn btn-light ">Export</button>
+          <button class="btn btn-dark">Settings</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="py-3 border-bottom bg-white">
+        <ul class="overflow-x-auto nav nav-pills rounded-3 text-center below-header header-list d-flex flex-row">
+          <li class="col nav-item btm-nav-item active p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#home">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 15 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+              </svg>
+              <small class="text-sm ps-2 fw-medium">Home</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#alerts">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 15 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+              </svg>
+              <small class="text-sm ps-2 fw-medium">Alert Center</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#sales">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 15 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg>
+              <small class="text-sm ps-2 fw-medium">Sales</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#purchases">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 15 16">
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+              </svg>
+              <small class="text-sm ps-2 fw-medium">Purchases</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#expenses">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 15 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+              </svg>
+              <small class="text-sm ps-2 fw-medium">Expenses</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#transfers">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 15 16">
+                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5"/>
+              </svg>          
+              <small class="text-sm ps-2 fw-medium">Transfers</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#projects">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 15 16">
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"/>
+              </svg>         
+              <small class="text-sm ps-2 fw-medium">Projects</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#client">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Client</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#subcont">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 15 16">
+                <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+              </svg>     
+              <small class="text-sm ps-2 fw-medium">Subcontracting</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#stateprov">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">State providers</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#business">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Business Plan</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#consump">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Consumption Mag.</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#weather">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Weather Report</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#stop">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Stop order</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#planning">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Planning</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#phases">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Phases</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#steps">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Steps</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#stepsgap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Steps Gap</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#construction">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Construction Products</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#deposit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Deposit Report</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#presence">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Presence</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#reservoir">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Reservoir</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#materials">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Materials</small>
+            </a>
+          </li>
+          <li class="col nav-item btm-nav-item p-0">
+            <a class="nav-link header-button rounded-3 py-1 px-3 " data-bs-toggle="pill" href="#yield">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 15 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+              </svg>       
+              <small class="text-sm ps-2 fw-medium">Yield</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main-body pt-4">
+        <div class="tab-content mb-4">
+          <div id="sales" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">Sales Center</h3>
+          </div>
+          <div id="purchases" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">Purchases Center</h3>
+          </div>
+          <div id="expenses" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">Expenses Center</h3> 
+          </div>
+          <div id="transfers" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">transfers Center</h3>
+          </div>
+          <div id="projects" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">projects Center</h3>
+          </div>
+          <div id="client" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">client Center</h3>
+          </div>
+          <div id="subcont" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">subcont Center</h3>
+          </div>
+          <div id="stateprov" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">stateprov Center</h3>
+          </div>
+          <div id="business" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">business Center</h3>
+          </div>
+          <div id="consump" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">consump Center</h3>
+          </div>
+          <div id="weather" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">weather Center</h3>
+          </div>
+          <div id="stop" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">stop Center</h3>
+          </div>
+          <div id="phases" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">phases Center</h3>
+          </div>
+          <div id="planning" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">planning Center</h3>
+          </div>
+          <div id="steps" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">steps Center</h3>
+          </div>
+          <div id="stepsgap" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">stepsgap Center</h3>
+          </div>
+          <div id="construction" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">construction Center</h3>
+          </div>
+          <div id="deposit" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">deposit Center</h3>
+          </div>
+          <div id="presence" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">presence Center</h3>
+          </div>
+          <div id="planning" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">planning Center</h3>
+          </div>
+          <div id="reservoir" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">reservoir Center</h3>
+          </div>
+          <div id="materials" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">materials Center</h3>
+          </div>
+          <div id="yield" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">yield Center</h3>
+          </div>
+          <div id="alerts" class="tab-pane rounded-3 tab-top fade bg-white">
+            <h3 class="m-3">Alert Center</h3>
+            <div id="alerts-div">
+              <div id="alert" class="alert flex-row d-flex justify-content-between m-3">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                  </svg>
+                  <small>Low Cement Stock (15 bags remaining)</small>
+                </div>
+                <div>
+                  <small>2 hours ago</small>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="home" class="tab-pane rounded-3 tab-top fade show active bg-white">
+            <iframe class="rounded-3" src="<%= project.details.link %>" width="100%" height="384px"></iframe>
+            <div class="d-grid gap-5 middle-body">
+              <div class="info-card bg-white my-3 p-4 rounded-3 border-1">
+                <div class="d-flex flex-row align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-text mb-1" viewBox="0 0 20 20">
+                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                  </svg>
+                  <h4 class="fw-semibold ps-1">
+                    Project Details
+                  </h4>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Reference</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.reference%></small>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Address</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.address%></small>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Floor Quantity</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.floorQuantity%></small>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Client Budget</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.clientBudget%></small>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Start Date</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.startDate%></small>
+                </div>
+                <div class="mt-4 d-flex flex-row ">
+                  <small class="fw-semibold text-body-secondary me-3">Status</small>
+                  <% if (status == "En course") { %>
+                    <div class="green-pill">Open</div>
+                  <% } else { %>
+                    <div class="red-pill">Close</div>
+                  <% } %>
+                </div>
+                <div class="mt-4">
+                  <small class="d-block fw-semibold text-body-secondary">Created By</small>
+                  <small class="d-block fs-6 text-black"><%= project.details.creator%></small>
+                </div>
+              </div>
+              <div class="info-card bg-white my-3 p-4 rounded-3 border-1">
+                <div class="d-flex flex-row align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bank fw-semibold mb-1" viewBox="0 0 20 20">
+                    <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
+                  </svg>
+                  <h4 class="fw-semibold ps-2 ">Financial Summary</h4>
+                </div>
+                <div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">Client</small>
+                    <small class="d-block fs-6 text-black"><%= project.financial.client %></small>
+                  </div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">Designation</small>
+                    <small class="d-block fs-6 text-black"><%= project.financial.designation %></small>
+                  </div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">Foundation Quantity</small>
+                    <small class="d-block fs-6 text-black"><%= project.financial.foundationQuantity %> MAD</small>
+                  </div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">MD/PS not to be exceeded</small>
+                    <small class="d-block fs-6 text-black"><%= project.financial.maxMD %> MAD</small>
+                  </div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">Deadline</small>
+                    <small class="d-block fs-6 text-black"><%= project.financial.deadline %></small>
+                  </div>
+                  <div class="mt-4">
+                    <small class="d-block fw-semibold text-body-secondary">Progression</small>
+                    <div class="d-flex justify-content-between">
+                      <small class="fs-6 text-black">Progress</small>
+                      <small class="fs-6 text-black" id="1-percentage">
+                        <%= progress %> %
+                      </small>
+                    </div>
+                    <progress class="progressbar" id="1-progress-bar" value="<%= progress %>" max="100"><%= progress %> %</progress>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bottom-section bg-white rounded-3">
+              <ul class="row row-cols-8 gap-1 nav nav-pills bottom-nav rounded-3 p-1 text-center">
+                <li class="col nav-item btm-nav-item active p-0">
+                  <a class="nav-link btm-text p-auto" data-bs-toggle="pill" href="#taskss">Tasks</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#inter">Interventions</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#reg">Reg. Enc.</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#dec">Dec. Reg.</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#media">Media Inter.</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#tour">360 Tour</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#trades">Trades</a>
+                </li>
+                <li class="col nav-item btm-nav-item p-0">
+                  <a class="nav-link btm-text" data-bs-toggle="pill" href="#files">Files</a>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="taskss" class="tab-pane fade show active">
+                  <h3>HOME</h3>
+                  <p>Some content.</p>
+                </div>
+                <div id="inter" class="tab-pane fade">
+                  <h3>Menu 1</h3>
+                  <p>Some content in menu 1.</p>
+                </div>
+                <div id="reg" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+                <div id="dec" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+                <div id="media" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+                <div id="tour" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+                <div id="trades" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+                <div id="files" class="tab-pane fade">
+                  <h3>Menu 2</h3>
+                  <p>Some content in menu 2.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
